@@ -1,0 +1,25 @@
+SET UP REACT-NATIVE | WINDOWS 10 | EMULATOR
+
+1. Install Node 4 
+2. Run npm install -g react-native-cli
+3. react-native init ProjectName
+4. react-native start
+5. react-native run-android
+
+
+Define the ANDROID_HOME environment variable 
+On Windows, go to Control Panel -> System and Security -> System -> Change settings -> Advanced -> Environment variables -> New
+Download Android SDK Tools
+Configure your SDK  https://facebook.github.io/react-native/docs/android-setup.html#content
+The Visual Studio Emulator for Android is a free android emulator that is hardware accelerated via Hyper-V. 
+It doesn't require you to install Visual Studio at all.
+https://facebook.github.io/react-native/docs/running-on-device-android.html
+
+install curl
+Download cacert.pem , a recent copy of valid CERT files, from http://curl.haxx.se/docs/caextract.html. Copy it to the same folder where you placed curl.exe and rename it curl-ca-bundle.crt . Invoke curl.exe from a command window (in Windows, click Start > Run and then enter "cmd" in the Run dialog box).
+
+https://github.com/libgdx/libgdx/wiki/Gradle-on-the-Commandline
+
+Setting the path environment variable setting such as: (path = > E:\Android\sdk): for example: (path = >%ANDROID_HOME%\tools%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools%ANDROID_HOME%\platform-tools) environment variable Android ANDROID_HOME:Android the SDK manager position
+Here must pay attention to the place, must be configured, or to the back can't find the SDK error, and I would like to remind you, do not convenient to use the absolute path to go down, it still can't find it, which made the mistake before me, but also very stubborn, don't listen to God. My lesson is others experience, should humbly ask don't hot, buddy, you must use ANDROID_HOME to configure the Oh, then I have to test the installation environment has not been successful, in the console input, Android, as shown below, the success of the installation, there will be the interface, what interface, wait and see. If there is no reaction, the miserable, no reason to continue to find a successful configuration.
+
