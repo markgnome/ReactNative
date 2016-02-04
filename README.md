@@ -1,4 +1,4 @@
 # React Native Projects
 
-Please feel to add!
+Please feel free to add!
 
