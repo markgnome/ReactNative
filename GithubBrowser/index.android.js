@@ -4,29 +4,29 @@
    */
    'use strict';
 
-   var React = require('react-native');
 
+
+   var React = require('react-native');
+   var ProgressBar = require('ProgressBarAndroid');
    var {
     AppRegistry,
     Component,
     StyleSheet,
     Text,
-    View,
-    ActivityIndicatorIOS
+    View
   } = React;
-
 
   var Login = require('./Login');
   var AppContainer = require('./AppContainer');
   var AuthService = require('./AuthService');
   var Utility = require('./utilities/utility.js')
+
   class GithubBrowser extends Component {
     constructor(props){
       super(props);
-
       this.state = {
         isLoggedIn: false,
-        checkingAuth: false
+        checkingAuth: true
       }
 
       Utility.bind(this, ['onLogin', 'componentDidMount'])
@@ -45,11 +45,8 @@
     render() {
       if(this.state.checkingAuth){
        return (
-        <View style={styles.container}>
-        <ActivityIndicatorIOS
-        animating={true}
-        size="large"
-        style={styles.loader} />
+          <View style={styles.container}>
+            <ProgressBar styleAttr="Inverse" />
         </View>
         );
      }
@@ -65,7 +62,7 @@
     }}
 
     onLogin(){
-      this.setState({isLoggedIn: false});
+      this.setState({isLoggedIn: true});
     }
   }
 

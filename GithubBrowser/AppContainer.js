@@ -1,14 +1,17 @@
 'use strict';
 
 var React = require('react-native');
-
+var ScrollableTabView = require('react-native-scrollable-tab-view');
 var {
     Text,
     View,
     Component,
     StyleSheet,
-    TabBarIOS
+    TabBarIOS,
+    ScrollView
 } = React;
+
+var Feed = require('./Feed');
 
 class AppContainer extends Component {
     constructor(props){
@@ -21,24 +24,16 @@ class AppContainer extends Component {
 
     render(){
       return (
-        <TabBarIOS style={styles.container}>
-            <TabBarIOS.Item
-                title="Feed"
-                selected={this.state.selectedTab == 'feed'}
-                icon={require('image!inbox')}
-                onPress={()=> this.setState({selectedTab: 'feed'})}
-            >
-                <Text style={styles.welcome}>Tab 1</Text>
-            </TabBarIOS.Item>
-            <TabBarIOS.Item
-                title="Search"
-                selected={this.state.selectedTab == 'search'}
-                icon={require('image!search')}
-                onPress={()=> this.setState({selectedTab: 'search'})}
-            >
-                <Text style={styles.welcome}>Tab 2</Text>
-            </TabBarIOS.Item>
-        </TabBarIOS>
+      <ScrollableTabView>
+        <ScrollView  tabLabel="Feed" style={styles.feedTab}>
+              <View style={styles.card}>
+           <Feed />
+            </View>
+        </ScrollView >
+        <ScrollView  tabLabel="Search">
+        </ScrollView >
+        
+      </ScrollableTabView>
       );
     }
 }
@@ -54,6 +49,9 @@ var styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  feedTab: {
+
   }
 });
 
