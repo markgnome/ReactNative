@@ -1,13 +1,12 @@
 'use strict';
 
 var React = require('react-native');
-
+   var ProgressBar = require('ProgressBarAndroid');
 var {
     Text,
     View,
     Component,
     ListView,
-    ActivityIndicatorIOS,
     Image
 } = React;
 
@@ -44,7 +43,7 @@ class Feed extends Component {
             .then((responseData)=> {
                 var feedItems =
                     responseData.filter((ev)=>
-                        ev.type == 'PushEvent');
+                        ev.type == 'MemberEvent');
                 this.setState({
                     dataSource: this.state.dataSource
                         .cloneWithRows(feedItems),
@@ -64,14 +63,8 @@ class Feed extends Component {
                 borderColor: '#D7D7D7',
                 borderBottomWidth: 1
             }}>
-                <Image
-                    source={{uri: rowData.actor.avatar_url}}
-                    style={{
-                        height: 36,
-                        width: 36,
-                        borderRadius: 18
-                    }}
-                />
+                <Image source={{uri: rowData.actor.avatar_url}} 
+                       style={{height: 36, width: 36, borderRadius: 18 }} />
 
                 <View style={{
                     paddingLeft: 20
@@ -81,15 +74,15 @@ class Feed extends Component {
                     </Text>
                     <Text style={{backgroundColor: '#fff'}}>
                         <Text style={{
-                            fontWeight: 600
+                            fontWeight: '600'
                         }}>{rowData.actor.login}</Text> pushed to
                     </Text>
                     <Text style={{backgroundColor: '#fff'}}>
-                        {rowData.payload.ref.replace('refs/heads/', '')}
+                        {rowData.payload.action}
                     </Text>
                     <Text style={{backgroundColor: '#fff'}}>
                         at <Text style={{
-                            fontWeight: 600
+                            fontWeight: '600'
                         }}>{rowData.repo.name}</Text>
                     </Text>
                 </View>
@@ -104,9 +97,7 @@ class Feed extends Component {
                 flex: 1,
                 justifyContent: 'center'
             }}>
-                <ActivityIndicatorIOS
-                    size="large"
-                    animating={true} />
+             <ProgressBar styleAttr="Inverse" />
             </View>
         );
       }
