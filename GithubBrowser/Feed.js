@@ -70,8 +70,7 @@ class Feed extends Component {
                         height: 36,
                         width: 36,
                         borderRadius: 18
-                    }}
-                />
+                    }}/>
 
                 <View style={{
                     paddingLeft: 20
@@ -81,7 +80,7 @@ class Feed extends Component {
                     </Text>
                     <Text style={{backgroundColor: '#fff'}}>
                         <Text style={{
-                            fontWeight: 600
+                            fontWeight: '600'
                         }}>{rowData.actor.login}</Text> pushed to
                     </Text>
                     <Text style={{backgroundColor: '#fff'}}>
@@ -89,7 +88,7 @@ class Feed extends Component {
                     </Text>
                     <Text style={{backgroundColor: '#fff'}}>
                         at <Text style={{
-                            fontWeight: 600
+                            fontWeight: '600'
                         }}>{rowData.repo.name}</Text>
                     </Text>
                 </View>
