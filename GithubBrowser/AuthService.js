@@ -16,7 +16,9 @@ class AuthService {
                 return cb();
             }
 
-            var zippedObj = _.zipObject(val);
+            //var zippedObj = _.zipObject(val);
+            var zippedObj = _.fromPairs(val);
+ 
 
             if(!zippedObj[authKey]){
                 return cb();

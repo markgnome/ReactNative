@@ -7,6 +7,8 @@ SET UP REACT-NATIVE | WINDOWS 10 | EMULATOR
 5. react-native run-android
 6. adb reverse tcp:8081 tcp:8081
 
+Reload JS
+adb shell input keyevent 82
 
 Define the ANDROID_HOME environment variable 
 On Windows, go to Control Panel -> System and Security -> System -> Change settings -> Advanced -> Environment variables -> New
