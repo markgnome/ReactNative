@@ -13,6 +13,7 @@ var {
 
 var moment = require('moment');
 var AuthService = require('./AuthService');
+var PushPayload = require('./PushPayload.js');
 class Feed extends Component {
     constructor(props){
         super(props);
@@ -35,7 +36,7 @@ class Feed extends Component {
         AuthService.getAuthInfo((err, authInfo)=> {
             var url = 'https://api.github.com/users/'
                 + authInfo.user.login
-                + '/received_events';
+                + '/events';
 
             fetch(url, {
                 headers: authInfo.header
@@ -44,7 +45,7 @@ class Feed extends Component {
             .then((responseData)=> {
                 var feedItems =
                     responseData.filter((ev)=>
-                        ev.type == 'MemberEvent');
+                        ev.type == 'PushEvent');
                 this.setState({
                     dataSource: this.state.dataSource
                         .cloneWithRows(feedItems),
@@ -55,7 +56,13 @@ class Feed extends Component {
     }
 
     pressRow(rowData){
-        console.log(rowData);
+       this.props.navigator.push({
+            name: 'PushEvent',
+            component: PushPayload,
+            passProps: {
+                pushEvent: rowData
+            }
+       });
     }
 
     renderRow(rowData){

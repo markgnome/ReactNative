@@ -8,15 +8,17 @@ var {
     Component,
     StyleSheet,
     TabBarIOS,
-    ScrollView
+    ScrollView,
+    Navigator,
+    TouchableOpacity 
 } = React;
 
 var Feed = require('./Feed');
+var PushPayload = require('./PushPayload.js');
 
 class AppContainer extends Component {
     constructor(props){
         super(props);
-
         this.state = {
             selectedTab: 'feed'
         }
@@ -24,19 +26,40 @@ class AppContainer extends Component {
 
     render(){
       return (
-      <ScrollableTabView>
-        <ScrollView  tabLabel="Feed" style={styles.feedTab}>
-              <View style={styles.card}>
-           <Feed />
-            </View>
-        </ScrollView >
-        <ScrollView  tabLabel="Search">
-        </ScrollView >
-        
-      </ScrollableTabView>
+          <Navigator
+            sceneStyle={{
+                flex: 1
+            }} 
+            initialRoute={{
+              component: Feed,
+              name:'Feed', 
+              index: 0
+            }}
+            renderScene={this.renderScene.bind(this)} />
       );
     }
+
+    renderScene(route, navigator){
+      var name = route.name;
+      if(name == 'Feed'){
+        return(
+          <ScrollableTabView>
+            <ScrollView  tabLabel="Feed" style={styles.feedTab}>
+              <Feed navigator={navigator} />
+            </ScrollView >
+            <ScrollView  tabLabel="Search">
+            </ScrollView >
+          </ScrollableTabView>
+        );
+      }
+      if(name == 'PushEvent'){
+        return(
+            <PushPayload navigator={navigator} data={route.passProps} />
+          );
+      }
+    }
 }
+
 
 var styles = StyleSheet.create({
   container: {
