@@ -30,6 +30,7 @@ class AppContainer extends Component {
             sceneStyle={{
                 flex: 1
             }} 
+            configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromRight }
             initialRoute={{
               component: Feed,
               name:'Feed', 
