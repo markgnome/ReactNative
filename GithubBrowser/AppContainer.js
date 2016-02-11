@@ -74,7 +74,7 @@ var styles = StyleSheet.create({
     margin: 10,
   },
   feedTab: {
-
+    backgroundColor: '#fff',
   }
 });
 

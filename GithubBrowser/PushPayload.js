@@ -52,7 +52,7 @@ class PushPayload extends Component {
               renderScene={this.renderScene.bind(this)}
               navigator={this.props.navigator}
               navigationBar={
-                <Navigator.NavigationBar style={{backgroundColor: '#246dd5'}}
+                <Navigator.NavigationBar style={{backgroundColor: '#48649F'}}
                     routeMapper={NavigationBarRouteMapper} />
               } />
         );
@@ -72,8 +72,7 @@ class PushPayload extends Component {
                         height: 120,
                         width: 120,
                         borderRadius: 60
-                    }}
-                />
+                    }}/>
 
                 <Text style={{
                     paddingTop: 20,
@@ -108,7 +107,7 @@ class PushPayload extends Component {
 var NavigationBarRouteMapper = {
   LeftButton(route, navigator, index, navState) {
     return (
-      <TouchableOpacity style={{flex: 1, justifyContent: 'center'}}
+      <TouchableOpacity style={{flex: 1, justifyContent: 'center', backgroundColor: '#48649F'}}
           onPress={() => navigator.parentNavigator.pop()}>
         <Text style={{color: 'white', margin: 10,}}>
            Back
