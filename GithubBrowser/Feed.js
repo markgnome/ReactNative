@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react-native');
-   var ProgressBar = require('ProgressBarAndroid');
+var ProgressBar = require('ProgressBarAndroid');
 var {
     Text,
     View,
