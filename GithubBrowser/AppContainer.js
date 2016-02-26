@@ -17,6 +17,9 @@ var {
 var Feed = require('./Feed');
 var PushPayload = require('./PushPayload.js');
 
+var Search = require('./Search')
+var Search = require('./SearchResults')
+
 class AppContainer extends Component {
     constructor(props){
         super(props);
@@ -50,6 +53,7 @@ class AppContainer extends Component {
               <Feed navigator={navigator} />
             </ScrollView >
             <ScrollView  tabLabel="Search">
+              <Search navigator={navigator} />
             </ScrollView >
           </ScrollableTabView>
         );
@@ -58,6 +62,11 @@ class AppContainer extends Component {
         return(
             <PushPayload navigator={navigator} data={route.passProps} />
           );
+      }
+      if(name == 'Results'){
+        return (
+          <SearchResults navigator={navigator} data={route.passProps} />
+        )
       }
     }
 }
